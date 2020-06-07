@@ -9,4 +9,4 @@ before_install:
   - docker build -t lollolove/myapp-frontend-test:latest -f Dockerfile.dev .
 
 script:
-  - docker run lollolove/myapp-frontend-test:latest npm run test -- --coverage
+  - docker run lollolove/myapp-frontend-test:latest npm run test -- --watchAll=false
