@@ -1,0 +1,17 @@
+# download base image
+FROM node:alpine
+
+# set working folder
+WORKDIR /srv/myapp-frontend
+
+# copy dependencies configuration
+COPY package.json .
+
+# install dependencies
+RUN npm install
+
+# copy all source tree
+COPY . .
+
+# set startup command in dev mode
+CMD ["npm","run","start"]
