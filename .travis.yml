@@ -1,9 +1,10 @@
+language: node_js
 sudo: required
 services:
   - docker
 
 before_install:
-  - docker build -t lollolove/myapp-frontend-test -f Dockerfile.dev .
+  - docker build -t lollolove/myapp-frontend-test:latest -f Dockerfile.dev .
 
 script:
-  - docker run myapp-frontend-test:latest npm run test -- --coverage
+  - docker run lollolove/myapp-frontend-test:latest npm run test -- --coverage
