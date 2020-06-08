@@ -38,7 +38,7 @@ RUN \
   && apt-get install -y --no-install-recommends dialog \
   && apt-get update \
   && apt-get install -y --no-install-recommends openssh-server \
-  && echo "$SSH_PASSWD" | chpasswd \
+  && (echo "$SSH_PASSWD" | chpasswd) \
   && chmod u+x /usr/local/bin/init.sh
 
 ADD scripts/sshd_config /etc/ssh/
