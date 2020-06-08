@@ -21,7 +21,9 @@ RUN npm run build
 # download base image
 FROM nginx
 
+# get env parameters
 ARG SSH_PASSWD
+ARG SSH_PORT
 
 # copy build result
 COPY --from=builder /srv/myapp-frontend/build /usr/share/nginx/html
