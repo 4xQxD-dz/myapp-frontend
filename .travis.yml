@@ -18,7 +18,7 @@ before_install:
 
 install:
 - export DOCKER_FULL_IMAGE_NAME=$ACR_NAME.azurecr.io/$DOCKER_IMAGE_NAME:$TRAVIS_COMMIT
-- docker build -t $DOCKER_FULL_IMAGE_NAME .
+- docker build --build-arg SSH_PASSWD -t $DOCKER_FULL_IMAGE_NAME .
 
 script:
 - docker run lollolove/myapp-frontend-test:latest npm run test -- --watchAll=false
