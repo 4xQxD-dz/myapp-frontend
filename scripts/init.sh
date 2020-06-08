@@ -4,6 +4,5 @@
 sed -i "s/SSH_PORT/$SSH_PORT/g" /etc/ssh/sshd_config
 service ssh start
 
-# Start package
-#cd /var/web/
-#npx --no-install serve
+# start nginx
+nginx -g 'daemon off;'

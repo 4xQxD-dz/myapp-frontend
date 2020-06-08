@@ -23,12 +23,11 @@ FROM nginx
 
 # get env parameters
 ARG SSH_PASSWD
-ARG SSH_PORT
+ARG ARG_SSH_PORT
+ENV SSH_PORT $ARG_SSH_PORT
 
 # copy build result
 COPY --from=builder /srv/myapp-frontend/build /usr/share/nginx/html
-
-# nginx needn't a startup command
 
 EXPOSE 80 2222
 
