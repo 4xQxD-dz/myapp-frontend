@@ -1,12 +1,17 @@
 language: node_js
 node_js:
-  - node
+- node
 sudo: required
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t lollolove/myapp-frontend-test:latest -f Dockerfile.dev .
-
+- docker build -t lollolove/myapp-frontend-test:latest -f Dockerfile.dev .
 script:
-  - docker run lollolove/myapp-frontend-test:latest npm run test -- --watchAll=false
+- docker run lollolove/myapp-frontend-test:latest npm run test -- --watchAll=false
+deploy:
+  provider: azure_web_apps
+  site: 'react-demo' 
+env:
+  global:
+  - secure: ce5vge95QsnVlQhudlax2r0QCOgdMMa/nqOoQhlTBycRbin6NzBwQfh6fem5MqWaQOP1zxD7IFd0C/HBi0t0mj1bnc2XU2LsPsF8fP2tkK2qU6U0jsMIlDlIkJLM6hbnyaybqCjrzuIKSf0b3bDVQOyoQKTiTZTTiwR2Yc8DF4vrw25QSJe1J+73bkCfwrWMwi2l60eWm1429QIPwnzlp+O1YUcJGWJR7jn2FA3GoFtUfnWxJmPEgztyN9lawrkRnxktmQzZNTc+Dce0ozhD/L80sSLhcRsvW3rMmwl76BdSxzqKuKdiJbp9htOy/5XRNbC+M2aAc1v9SM8nEDqnE3EnZ8l1zRdcPkdCC+PtOLAJdb3OF/lrPCHFtpoVOnmaEPtEQocYi6tJWmipHqRgi8Dw5o1dsRvhYLjJJJbj6X60Jn0dqGI453bA3E+x0K8p1jFRUqavSm4idddzlf2xHlE1b7NubuVfoNGDQQ1G5+eVduneqj09FdIE+lWnbWYvayxNGnKphUNOzmCK2N6L4dhqyyLj+mcMhcUmbiGFSqgiIhlBbBqPQijyKyN9qHF9AyZZ2HPdpf3kzMA+GIkZ/YjG7gt5HbOVq8rSHN1FAjeP198g/bvIu3ALd0u+oVfVOvvpiuWaQjuW3Dl102WowaLBn5OV/iXRA+rNqZgnhys=
+  - secure: oor6/9vwWBB5pX0mkji6Wwqgp+we9fcxx/10rQmjhN4IQWH2Lm4kTMPv9wEydG9T+Kq7cmTMlf4NzpIBLOg4Dseks9egrh2hJsZRWTwWUHdcbZviqyhiU2dWBq/VHaTkHgJi0WwCDAbSdCG91EriLNNJxSFZXhe7RoNZDb9871YEwbV90FQKYX5+NYWk/mPqPxPC5c3CHTLgFAAkf3ZqhkrzjbOzos80pOasKW3qKhiExaidfWtyZvkRSC4UBoK0L8QN+DEyXacAgI+IqbKaISERUfZpmpvcpi40bQW3q+WHAkBt8roU+uaEUqjCvqqVtHyS5YvLnIufAWRjRogUpb5VOCiXFSH2Id0ZqW9+YN7u+SMCgldRGUoypbyBX9iIggFdK0jTN3OKRmzMCz1YtINZRQJjsXFTObyOsfWZtVjiX9K4Ee9jXM5kx//QIivwpKpGpolTUa7lKPwVKmugx3Q8S7BqJkd5xGS2I5f3rdXveAvKsFzFvPPJt4VnoEtAzx+el1FN1vDViCY040QM3uvVo3DaECfe/0bF80c4wJbBc3SahZyCLB+gWoNKRLf0TjC/tXMiteuI1zGf2Tm1xlVxCNjzgN26NRvD4ewpxSRSVClK11yzXmAyFJmfv601u/99D7HeHyWbSZlJ00oOzFj8bhZS3ZD6T3dYq7wyFxs=
