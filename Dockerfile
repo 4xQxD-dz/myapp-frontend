@@ -21,6 +21,8 @@ RUN npm run build
 # download base image
 FROM nginx
 
+ARG SSH_PASSWD
+
 # copy build result
 COPY --from=builder /srv/myapp-frontend/build /usr/share/nginx/html
 
@@ -38,7 +40,7 @@ RUN \
   && apt-get install -y --no-install-recommends dialog \
   && apt-get update \
   && apt-get install -y --no-install-recommends openssh-server \
-  && (echo "$SSH_PASSWD" | chpasswd) \
+  && echo "$SSH_PASSWD" | chpasswd \
   && chmod u+x /usr/local/bin/init.sh
 
 ADD scripts/sshd_config /etc/ssh/
