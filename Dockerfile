@@ -15,7 +15,7 @@ RUN npm install
 COPY . .
 
 # run build
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # STAGE PHASE
 # download base image
